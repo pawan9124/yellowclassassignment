@@ -3,8 +3,10 @@ import ImageModal from "../ImageModal";
 import "./style.css";
 
 function ImageCard(props) {
+  /* toggle for the modal to open and close the modal */
   const [modalToggle, setModalToggle] = useState(false);
 
+  /* Function to handle the toggle from this component and close button from modal */
   const handleModalToggle = (e, currentValue) => {
     e.preventDefault();
     setModalToggle(currentValue);

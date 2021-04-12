@@ -5,6 +5,7 @@ function ImageModal(props) {
   const [currentImage, setCurrentImage] = useState([]);
   const [imageIndexMapObject, setImageMapObject] = useState({});
   const [currentPointer, setCurrentPointer] = useState(props.currentIndex);
+
   useEffect(() => {
     props.imageList.map((mappedData, index) => {
       //creating the imageIndexMapObject for better changing at image changes through arrow
@@ -19,18 +20,21 @@ function ImageModal(props) {
   const handleImageChanges = (nav) => {
     let currentIndex = parseInt(currentPointer);
     let currentImageDetails = {};
-
+    /* Make the photo navigation cricular when reaches end and start based on index of image */
     if (nav === "next") {
       currentIndex += 1;
     } else {
       currentIndex -= 1;
     }
+    /* If currentIndex is between 0 and array.length  */
     if (currentIndex > -1 && currentIndex <= props.imageList.length - 1) {
       currentImageDetails = imageIndexMapObject[currentIndex];
+      /* to point to last if negative came */
     } else if (currentIndex === -1) {
       currentIndex = props.imageList.length - 1;
       currentImageDetails = imageIndexMapObject[currentIndex];
     } else if (currentIndex === props.imageList.length) {
+      /* to point first if last came */
       currentIndex = 0;
       currentImageDetails = imageIndexMapObject[currentIndex];
     }

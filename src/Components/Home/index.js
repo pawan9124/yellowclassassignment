@@ -5,6 +5,8 @@ import "./style.css";
 
 import MansoryDashboard from "../MansoryDashboard";
 
+/* Fetching the data from the unsplash using at the component did mount using useEffect */
+
 function Home() {
   const [images, setImages] = useState([]);
 
@@ -12,7 +14,7 @@ function Home() {
     let photoList = await axios.get(
       `https://api.unsplash.com/photos/?client_id=3Ya48sMFrS1On5pBIllGKsUF0sIDua0NVTxXKXhlYSY&count=${count}`
     );
-    console.log("photosList", photoList);
+    /* Map the urls from the data and push previous resullt and current result together */
     const photoListMap = photoList.data.map((x) => x.urls);
     if (photoListMap.length > 0) {
       setImages([...images, ...photoListMap]);

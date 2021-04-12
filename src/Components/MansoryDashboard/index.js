@@ -2,9 +2,8 @@ import React from "react";
 import "./style.css";
 
 import ImageCard from "../ImageCard";
-
+/* Creaet the mansoryboard */
 function MansoryDashboard(props) {
-  console.log("pporps", props);
   const imageCards = props.images.map((image, index) => (
     <ImageCard image={image} imageList={props.images} currentIndex={index} />
   ));
